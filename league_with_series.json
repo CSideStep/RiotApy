@@ -1,0 +1,44 @@
+{
+        "queueType": "RANKED_FLEX_TT",
+        "hotStreak": false,
+        "miniSeries": {
+            "wins": 0,
+            "losses": 1,
+            "target": 3,
+            "progress": "LNNNN"
+        },
+        "wins": 10,
+        "veteran": false,
+        "losses": 10,
+        "playerOrTeamId": "35368039",
+        "leagueName": "Ahri's Wardens",
+        "playerOrTeamName": "altlhro",
+        "inactive": false,
+        "rank": "I",
+        "freshBlood": false,
+        "leagueId": "ba0e53c0-8a09-11e8-88c9-c81f66db01ef",
+        "tier": "SILVER",
+        "leaguePoints": 85
+    },
+    {
+        "queueType": "RANKED_SOLO_5x5",
+        "hotStreak": false,
+        "miniSeries": {
+            "wins": 1,
+            "losses": 1,
+            "target": 2,
+            "progress": "LWN"
+        },
+        "wins": 241,
+        "veteran": true,
+        "losses": 218,
+        "playerOrTeamId": "35368039",
+        "leagueName": "Irelia's Giants",
+        "playerOrTeamName": "altlhro",
+        "inactive": false,
+        "rank": "IV",
+        "freshBlood": false,
+        "leagueId": "a57bee70-20a7-11e8-8e8e-c81f66dd0e0d",
+        "tier": "DIAMOND",
+        "leaguePoints": 96
+    }
