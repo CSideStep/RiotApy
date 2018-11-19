@@ -43,14 +43,14 @@ class MiniSeriesResponse:
     progress:str
 
 @dataclass
-class LeagueByLeagueIdPlayerResponse(ChallengerByQueuePlayerResponse):
+class LeaguePlayerResponse(ChallengerByQueuePlayerResponse):
     miniSeries:MiniSeriesResponse #or None
 
 @dataclass
-class LeagueByLeagueIdResponse:
+class LeagueResponse:
     name:str
     tier:str
     queue:str
     leagueId:str
-    entires:List[LeagueByLeagueIdPlayerResponse]
+    entires:List[LeaguePlayerResponse]
     

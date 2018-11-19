@@ -47,7 +47,7 @@ class RiotLeague(RiotApi):
     def league_by_league_id(self, id:str, server:str=None):
         server = (server or self.server)
         response = get(f"https://{self.server}.api.riotgames.com/lol/league/v3/leagues/{id}?api_key={self.key}").json()
-        players = [LeagueByLeagueIdPlayerResponse(player["playerOrTeamId"],
+        players = [LeaguePlayerResponse(player["playerOrTeamId"],
                                                    player["playerOrTeamName"],
                                                    player["leaguePoints"],
                                                    player["rank"],
@@ -59,10 +59,25 @@ class RiotLeague(RiotApi):
                                                    player["hotStreak"],
                                                    mini_series_helper(player))
                                                    for player in response["entries"]]
-        return LeagueByLeagueIdResponse(response["name"], response["tier"], response["queue"], response["leagueId"], players)
+        return LeagueResponse(response["name"], response["tier"], response["queue"], response["leagueId"], players)
 
     def master_league_by_queue(self, queue, server:str=None):
         server = (server or self.server)
+        response = get(f"https://{self.server}.api.riotgames.com/lol/league/v3/leagues/{id}?api_key={self.key}").json()
+        players = [LeaguePlayerResponse(player["playerOrTeamId"],
+                                                   player["playerOrTeamName"],
+                                                   player["leaguePoints"],
+                                                   player["rank"],
+                                                   player["wins"],
+                                                   player["losses"],
+                                                   player["veteran"],
+                                                   player["inactive"],
+                                                   player["freshBlood"],
+                                                   player["hotStreak"],
+                                                   mini_series_helper(player))
+                                                   for player in response["entries"]]
+        return LeagueResponse(response["name"], response["tier"], response["queue"], response["leagueId"], players)
+
         
 
     def position_by_summoner_id(self, summoner_id:int):
