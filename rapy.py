@@ -63,7 +63,7 @@ class RiotLeague(RiotApi):
 
     def master_league_by_queue(self, queue, server:str=None):
         server = (server or self.server)
-        response = get(f"https://{self.server}.api.riotgames.com/lol/league/v3/leagues/{id}?api_key={self.key}").json()
+        response = get(f"https://{server}.api.riotgames.com/lol/league/v3/masterleagues/by-queue/{queue}?api_key={self.key}").json()
         players = [LeaguePlayerResponse(player["playerOrTeamId"],
                                                    player["playerOrTeamName"],
                                                    player["leaguePoints"],
@@ -78,11 +78,25 @@ class RiotLeague(RiotApi):
                                                    for player in response["entries"]]
         return LeagueResponse(response["name"], response["tier"], response["queue"], response["leagueId"], players)
 
-        
-
-    def position_by_summoner_id(self, summoner_id:int):
-        pass
-
+    def position_by_summoner_id(self, summoner_id:int, server:str=None):
+        server=(server or self.server)
+        response = get(f"https://{server}.api.riotgames.com/lol/league/v3/positions/by-summoner/{summoner_id}?api_key={self.key}").json()
+        return LeaguesByPlayerResponse([LeagueByPlayerResponse(
+            queue["queueType"],
+            queue["hotStreak"],
+            queue["wins"],
+            queue["losses"],
+            queue["veteran"],
+            queue["playerOrTeamId"],
+            queue["leagueName"],
+            queue["playerOrTeamName"],
+            queue["inactive"],
+            queue["rank"],
+            queue["freshBlood"],
+            queue["leagueId"],
+            queue["tier"],
+            queue["leaguePoints"])
+         for queue in response])
 class RiotStatus(RiotApi):
 
     def shard_data(self):

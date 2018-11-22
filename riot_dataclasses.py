@@ -18,7 +18,7 @@ class ChampionRotationResponse:
 class ChallengerByQueuePlayerResponse:
     player_or_team_id:int
     player_or_team_name:str
-    league_point:int
+    league_points:int
     rank:str
     wins:int
     losses:int
@@ -53,4 +53,63 @@ class LeagueResponse:
     queue:str
     leagueId:str
     entires:List[LeaguePlayerResponse]
-    
+
+@dataclass 
+class LeagueByPlayerResponse:
+    queue_type:str
+    hot_streak:bool
+    wins:int
+    losses:int
+    veteran:bool
+    player_or_team_id:int
+    league_name:str
+    player_or_team_name:str
+    inactive:bool
+    rank:str
+    fresh_blood:bool
+    league_id:str
+    tier:str
+    league_points:int
+
+@dataclass
+class LeaguesByPlayerResponse:
+    leagues:List[LeagueByPlayerResponse]
+
+@dataclass
+class TranslationResponse:
+    locale:str
+    content:str
+    updated_at:str
+
+@dataclass
+class MessageResponse:
+    severity:str
+    author:str
+    created_at:str
+    translation:List[TranslationResponse]
+    updated_at:str
+    content:str
+    id:str
+
+@dataclass
+class IncidentResponse:
+    active:bool
+    created_at:str
+    id:int
+    updates:List[MessageResponse]
+
+@dataclass
+class ServiceResponse:
+    status:str
+    incidents:List[IncidentResponse]
+    name:str
+    slug:str
+
+@dataclass
+class ShardStatusResponse:
+    name:str
+    region_tag:str
+    hostname:str
+    services:List[ServiceResponse]
+    slug:str
+    locales:List[str]
